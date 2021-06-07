@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TestApp</string>
+    <string name="joystick_controlling_app">Joystick Control App</string>
 </resources>
