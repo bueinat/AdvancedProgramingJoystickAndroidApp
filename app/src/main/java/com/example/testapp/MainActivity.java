@@ -2,8 +2,9 @@ package com.example.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.content.Intent;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,4 +27,6 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, JoystickActivity.class);
         startActivity(intent);
     }
+
+
 }

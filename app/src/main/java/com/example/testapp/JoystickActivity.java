@@ -1,10 +1,14 @@
 package com.example.testapp;
 
-import android.content.Context;
-import android.view.View;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class JoystickActivity extends View {
-    public JoystickActivity(Context context) {
-        super(context);
+import android.os.Bundle;
+
+public class JoystickActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_joystick);
     }
 }
