@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">TestApp</string>
-    <string name="joystick_controlling_app">Joystick Control App</string>
+    <string name="joystick_controlling_app">Main Activity</string>
+    <string name="joystick_activity">Joystick Control</string>
 </resources>
