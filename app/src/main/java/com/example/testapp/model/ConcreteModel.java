@@ -8,10 +8,10 @@ public class ConcreteModel implements AbstractModel{
     private InetAddress ip;
     private int port;
     private ThreadPool tp;
-    private int aileronVal;
-    private int elevatorVal;
-    private int rudderVal;
-    private int throttleVal;
+    private double aileronVal;
+    private double elevatorVal;
+    private double rudderVal;
+    private double throttleVal;
     public ConcreteModel(InetAddress ip, int port)
     {
         this.ip = ip;
@@ -33,23 +33,23 @@ public class ConcreteModel implements AbstractModel{
             ;
         }
     }
-        public void setElevator(int i)
+        public void setElevator(double i)
         {
             this.elevatorVal = i;
             this.tp.addString("elevator" + i);
         }
 
-    public void setAileron(int i)
+    public void setAileron(double i)
     {
         this.aileronVal = i;
         this.tp.addString("aileron" + i);
     }
-    public void setRudder(int i)
+    public void setRudder(double i)
     {
         this.rudderVal = i;
         this.tp.addString("rudder" + i);
     }
-    public void setThrottle(int i)
+    public void setThrottle(double i)
     {
         this.throttleVal = i;
         this.tp.addString("throttle" + i);
