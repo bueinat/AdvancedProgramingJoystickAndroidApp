@@ -1,4 +1,4 @@
-package com.example.testapp;
+package com.example.testapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.testapp.databinding.ActivityJoystickBinding;
 
 import java.io.Serializable;
+
+import com.example.testapp.R;
+import com.example.testapp.viewModel.AbstractViewModel;
+import com.example.testapp.viewModel.ConcreteViewModel;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        ConcreteViewModel vm = new ConcreteViewModel();
+        vm.runModel();
         Intent intent = new Intent(this, JoystickActivity.class);
         intent.putExtra("ViewModel", (Serializable) VM);
         startActivity(intent);

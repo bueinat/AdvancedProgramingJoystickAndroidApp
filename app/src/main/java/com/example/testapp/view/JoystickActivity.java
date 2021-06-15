@@ -1,4 +1,4 @@
-package com.example.testapp;
+package com.example.testapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,8 +17,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.testapp.databinding.ActivityJoystickBinding;
 
+
+import com.example.testapp.R;
+import com.example.testapp.viewModel.AbstractViewModel;
 
 public class JoystickActivity extends AppCompatActivity {
 

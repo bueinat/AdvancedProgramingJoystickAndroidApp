@@ -1,4 +1,4 @@
-package com.example.testapp;
+package com.example.testapp.viewModel;
 
 import java.io.Serializable;
 
