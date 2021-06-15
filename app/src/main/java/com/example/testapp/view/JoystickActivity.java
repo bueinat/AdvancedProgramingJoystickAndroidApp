@@ -1,9 +1,11 @@
-package com.example.testapp;
+package com.example.testapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.SeekBar;
+
+import com.example.testapp.R;
 
 public class JoystickActivity extends AppCompatActivity {
 

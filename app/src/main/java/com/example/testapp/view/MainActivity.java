@@ -1,9 +1,12 @@
-package com.example.testapp;
+package com.example.testapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.content.Intent;
+
+import com.example.testapp.R;
+import com.example.testapp.viewModel.ConcreteViewModel;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        ConcreteViewModel vm = new ConcreteViewModel();
+        vm.runModel();
         Intent intent = new Intent(this, JoystickActivity.class);
         startActivity(intent);
     }

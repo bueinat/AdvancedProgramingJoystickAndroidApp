@@ -1,4 +1,4 @@
-package Model;
+package com.example.testapp.model;
 
 public interface AbstractModel {
 
