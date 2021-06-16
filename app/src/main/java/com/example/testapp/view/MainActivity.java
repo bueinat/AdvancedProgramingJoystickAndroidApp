@@ -19,21 +19,21 @@ import com.example.testapp.viewModel.ConcreteViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
-    AbstractViewModel VM;
+//    AbstractViewModel VM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-        VM = new ConcreteViewModel();
+//        VM = new ConcreteViewModel();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        ConcreteViewModel vm = new ConcreteViewModel();
-        vm.runModel();
+//        ConcreteViewModel vm = new ConcreteViewModel();
+//        vm.runModel();
         Intent intent = new Intent(this, JoystickActivity.class);
-        intent.putExtra("ViewModel", (Serializable) VM);
+//        intent.putExtra("ViewModel", (Serializable) VM);
         startActivity(intent);
     }
 
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         Intent intent = new Intent(this, JoystickActivity.class);
-        intent.putExtra("ViewModel", (Serializable) VM);
+//        intent.putExtra("ViewModel", (Serializable) VM);
         startActivity(intent);
     }
 
