@@ -26,56 +26,29 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     @Bindable
     private int throttleProgress = 100;
 
-    @Bindable
-    private String userEmail;
-    @Bindable
-    public void setUserEmail(String email) {
-        Log.d("setm", "This is my message");
-        this.userEmail = email;
-        notifyPropertyChanged(BR.userEmail);
-    }
-    @Bindable
-    public String getUserEmail() {
-        Log.d("getm", "This is my message");
-        return this.userEmail;
-    }
 
-    @Bindable
-    private String userPassword;
-    @Bindable
-    public void setUserPassword(String email) {
-        Log.d("setps", "This is my message");
-        this.userPassword = email;
-        notifyPropertyChanged(BR.userPassword);
-    }
-    @Bindable
-    public String getUserPassword() {
-        Log.d("getps", "This is my message");
-        return this.userPassword;
-    }
+    // bind the data to ip and to port, and then call runModel
+    // bind each of the properties, and then call model.set for each one of them
+    // i think the set methods behind is not necessary
 
     @Bindable
     public double getThrottle() {
         Log.d("throttle", "This is my message");
         return this.throttle;
-        //bind the data to ip and to port, and then call runModel
-
-        //bind each of the properties, and then call model.set for each one of them
-        //i think the set methods behind is not necessary
     }
 
 
-        public void setAileron ( double new_aileron){
+        public void setAileron(double new_aileron) {
             this.throttle = new_aileron;
-            this.model.setThrottle(new_aileron);
+            this.model.setAileron(new_aileron);
         }
-        public void setElevator ( double new_elevator){
+        public void setElevator(double new_elevator) {
             this.throttle = new_elevator;
-            this.model.setThrottle(new_elevator);
+            this.model.setElevator(new_elevator);
         }
-        public void setRudder ( double new_rudder){
+        public void setRudder(double new_rudder) {
             this.throttle = new_rudder;
-            this.model.setThrottle(new_rudder);
+            this.model.setRudder(new_rudder);
         }
 
 
@@ -88,9 +61,7 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
         // update model's throttle
     }
 
-                private double progressToValue(int progress) {
-                return (double)(progress - 100) / 100;
-            }
+    private double progressToValue(int progress) { return (double)(progress - 100) / 100; }
     @Bindable
     public int getThrottleProgress() {
         Log.d("ThrottleProgress get", "This is my message " + progressToValue((this.throttleProgress)));
@@ -108,6 +79,7 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     @Override
         public void runModel ()
         {
+            Log.d("runModel", "This is my message");
             try {
                 // ip and port for example
                 InetAddress ip = InetAddress.getByAddress(

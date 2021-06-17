@@ -45,40 +45,6 @@ public class JoystickActivity extends AppCompatActivity {
         VM.runModel();
         binding.setViewModel(VM);
         binding.executePendingBindings();
-
-//        setContentView(R.layout.activity_joystick);
-//        viewModel = (AbstractViewModel) getIntent().getSerializableExtra("ViewModel");
-
-//        SeekBar th_sk = findViewById(R.id.throttleSeekBar);
-//        th_sk.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            double progressChangedValue = 0;
-//
-//            private double progressToValue(int progress) {
-//                return (double)(progress - 100) / 100;
-//            }
-////
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                progressChangedValue = progressToValue(progress); // progress in [0,200] to value in [-1,1]
-//                TextView throttleValue = findViewById(R.id.throttleValue);
-//                throttleValue.setText("" + progressChangedValue);
-//
-//                // Get the thumb bound and get its left value
-//                int x = seekBar.getThumb().getBounds().left;
-//                // set the left value to textview x value
-//                throttleValue.setX(x);
-//                VM.setThrottle(progressChangedValue);
-//            }
-//
-//            public void onStartTrackingTouch(SeekBar seekBar) {
-//                // TODO Auto-generated method stub
-//            }
-//
-//            public void onStopTrackingTouch(SeekBar seekBar) {
-//                // TODO Auto-generated method stub
-//            }
-//        });
-
-
     }
 
 }

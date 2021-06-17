@@ -2,4 +2,5 @@
     <string name="app_name">TestApp</string>
     <string name="joystick_controlling_app">Main Activity</string>
     <string name="joystick_activity">Joystick Control</string>
+    <string name="joystickTitle">Joystick</string>
 </resources>
