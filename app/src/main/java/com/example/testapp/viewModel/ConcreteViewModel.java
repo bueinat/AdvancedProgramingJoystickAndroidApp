@@ -38,7 +38,12 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     public double getThrottle() {
         Log.d("throttle", "This is my message");
         return progressToValue(this.throttleProgress);
+        //bind the data to ip and to port, and then call runModel
+
+        //bind each of the properties, and then call model.set for each one of them
+        //i think the set methods behind is not necessary
     }
+
 
     @Override
     @Bindable
@@ -127,8 +132,8 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
         try {
             // ip and port for example
             InetAddress ip = InetAddress.getByAddress(
-                    new byte[]{(byte) 212, (byte) 76, (byte) 112, (byte) 219});
-            this.model = new ConcreteModel(ip, 6400);
+                    new byte[]{(byte) 192, (byte) 168, (byte) 2, (byte) 107});
+            this.model = new ConcreteModel(ip, 5400);
             model.connectToServer();
         } catch (Exception e) {
             System.out.println("failed to create the variable \"ip\"");

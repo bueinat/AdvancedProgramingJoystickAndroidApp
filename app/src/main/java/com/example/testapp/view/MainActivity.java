@@ -8,11 +8,15 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 
 import java.io.Serializable;
+import java.net.Inet6Address;
+import java.net.InetAddress;
 
 import com.example.testapp.R;
+import com.example.testapp.model.ConcreteModel;
 import com.example.testapp.viewModel.AbstractViewModel;
 import com.example.testapp.viewModel.ConcreteViewModel;
 
@@ -25,6 +29,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 //        VM = new ConcreteViewModel();
+
+        /*
+        try {
+            InetAddress ip = InetAddress.getByAddress(
+                    new byte[]{(byte) 192, (byte) 168, (byte) 2, (byte) 107});
+            //Inet6Address ips = In
+
+            ConcreteModel model = new ConcreteModel(ip, 5400);
+            model.connectToServer();
+        } catch(Exception e)
+        {
+
+        }
+
+         */
     }
 
     @Override

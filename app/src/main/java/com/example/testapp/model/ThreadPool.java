@@ -1,12 +1,15 @@
 package com.example.testapp.model;
+import android.util.Log;
+
 import java.io.PrintWriter;
 import java.net.InetAddress;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Queue;
 
 
-public class ThreadPool implements Runnable{
+public class ThreadPool implements Runnable {
     private Queue<String> q;
     private int threadsNum;
     private Boolean keepRun;
@@ -36,9 +39,11 @@ public class ThreadPool implements Runnable{
         PrintWriter out;
         InetAddress ip;
         try {
-
+            Socket socket = new Socket();
+            //socket.connect(new InetSocketAddress("172.30.0.1", 6400));
+            //Socket soc = new Socket("172.30.0.1", 6400);
             Socket fg = new Socket(this.ip, this.port);
-            System.out.println("connect to server");
+            Log.d("abc", "connect to server");
             out  = new PrintWriter(fg.getOutputStream(), true);
 
 
@@ -54,7 +59,7 @@ public class ThreadPool implements Runnable{
 
         } catch(Exception e)
         {
-            ;
+            Log.d("a", "exeption: " + e.getMessage());
         }
 
         //return 1;
