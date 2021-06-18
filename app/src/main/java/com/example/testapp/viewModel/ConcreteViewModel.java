@@ -134,6 +134,9 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
             InetAddress ip = InetAddress.getByAddress(
                     new byte[]{(byte) 192, (byte) 168, (byte) 2, (byte) 107});
             this.model = new ConcreteModel(ip, 5400);
+            this.model.setThrottle(1.0);
+            this.model.setRudder(0.1);
+            this.model.setAileron(0.2);
             model.connectToServer();
         } catch (Exception e) {
             System.out.println("failed to create the variable \"ip\"");

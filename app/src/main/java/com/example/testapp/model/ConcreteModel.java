@@ -62,16 +62,19 @@ public class ConcreteModel implements AbstractModel{
                         {
                             if(massagesQueue.isEmpty())
                             {
-                                wait();
+                                while(true);
+                                //wait();
                             }
-                            out.print(massagesQueue.poll());
+                            String toSend  = massagesQueue.poll();
+                            out.print(toSend);
                             out.flush();
+                            Log.d("send to client", toSend);
 
                         }
                     } catch (IOException e)
                     {
 
-                    } catch (InterruptedException e)
+                    } //catch (InterruptedException e)
                     {
 
                     }
@@ -85,28 +88,34 @@ public class ConcreteModel implements AbstractModel{
             ;
         }
     }
-        public void setElevator(double i)
-        {
-            this.elevatorVal = i;
-            //this.tp.addString("elevator" + i);
-            massagesQueue.add("set /flight/elevator" + i + "\r\n");
-            notify();
-        }
+    public void setElevator(double i)
+    {
+        this.elevatorVal = i;
+        //this.tp.addString("elevator" + i);
+        massagesQueue.add("set /flight/elevator " + i + "\r\n");
+        //notify();
+    }
 
     public void setAileron(double i)
     {
         this.aileronVal = i;
-        this.tp.addString("aileron" + i);
+        //this.tp.addString("aileron" + i);
+        massagesQueue.add("set /flight/aileron " + i + "\r\n");
+        //notify();
     }
     public void setRudder(double i)
     {
         this.rudderVal = i;
-        this.tp.addString("rudder" + i);
+        //this.tp.addString("rudder" + i);
+        massagesQueue.add("set /flight/rudder " + i + "\r\n");
+        //notify();
     }
     public void setThrottle(double i)
     {
         this.throttleVal = i;
-        this.tp.addString("throttle" + i);
+        //this.tp.addString("throttle" + i);
+        massagesQueue.add("set /flight/rudder " + i + "\r\n");
+        //notify();
     }
 
 }
