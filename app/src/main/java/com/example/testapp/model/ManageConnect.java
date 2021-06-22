@@ -4,7 +4,6 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.InetAddress;
-import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -13,8 +12,6 @@ import java.util.Queue;
 public class ManageConnect {
     private Queue<String> massagesQueue;
     private Boolean keepRun;
-    private InetAddress ip;
-    private int port;
     private PrintWriter out;
     private Socket socket;
 

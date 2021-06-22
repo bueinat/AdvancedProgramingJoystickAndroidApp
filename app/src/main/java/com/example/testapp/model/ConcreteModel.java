@@ -1,9 +1,7 @@
 package com.example.testapp.model;
 
 import android.util.Log;
-
 import java.io.IOException;
-
 import java.net.InetAddress;
 import java.lang.*;
 
@@ -11,8 +9,6 @@ import java.lang.*;
 public class ConcreteModel implements AbstractModel{
 
     private ManageConnect manageConnect;
-    private boolean stop = false;
-
 
     public ConcreteModel(InetAddress ip, int port)
     {
