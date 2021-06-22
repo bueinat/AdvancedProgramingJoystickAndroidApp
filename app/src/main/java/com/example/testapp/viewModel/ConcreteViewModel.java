@@ -62,7 +62,7 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
 
     @Bindable
     public void setThrottleProgress(int new_throttle) {
-        Log.d("ThrottleProgress set", "This is my message " + progressToValue((this.throttleProgress)));
+//        Log.d("ThrottleProgress set", "This is my message " + progressToValue((this.throttleProgress)));
         this.throttleProgress = new_throttle;
         notifyPropertyChanged(BR.throttleProgress);
         this.model.setThrottle(getRudder());
@@ -73,54 +73,52 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
 
     @Override
     @Bindable
-    public double getRudder() {
-        Log.d("rudder", "This is my message");
-        return progressToValue(this.rudderProgress);
-    }
+    public double getRudder() { return progressToValue(this.rudderProgress); }
 
     @Override
     @Bindable
     public void setRudder(double new_rudder) {
         // update model's throttle
-        Log.d("rudder", "This is my message");
+//        Log.d("rudder", "This is my message");
         setRudderProgress(valueToProgress(new_rudder));
         notifyPropertyChanged(BR.rudder);
     }
 
     @Bindable
-    public int getRudderProgress() {
-        Log.d("RudderProgress get", "This is my message " + progressToValue((this.rudderProgress)));
-        return this.rudderProgress;
-    }
+    public int getRudderProgress() { return this.rudderProgress; }
 
     @Bindable
     public void setRudderProgress(int new_rudder) {
-        Log.d("ThrottleProgress set", "This is my message " + progressToValue((this.rudderProgress)));
+//        Log.d("ThrottleProgress set", "This is my message " + progressToValue(this.rudderProgress));
         this.rudderProgress = new_rudder;
 //        notifyPropertyChanged(BR.rudderProgress);
         this.model.setRudder(getRudder());
     }
 
+    @Override
+    @Bindable
+    public double getAileron() {
+        return this.aileron;
+    }
 
+    @Bindable
     public void setAileron(double new_aileron) {
+//        Log.d("AileronProgress set", "This is my message " + this.aileron);
         this.aileron = new_aileron;
         this.model.setAileron(new_aileron);
     }
 
     @Override
+    @Bindable
     public double getElevator() {
         return this.elevator;
     }
 
+    @Bindable
     public void setElevator(double new_elevator) {
+        Log.d("ElevatorProgress set", "This is my message " + this.elevator);
         this.elevator = new_elevator;
         this.model.setElevator(new_elevator);
-    }
-
-
-    @Override
-    public double getAileron() {
-        return this.aileron;
     }
 
     @Override
@@ -128,7 +126,7 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     {
         // what happens if you click the button after
         // you've already connected
-        Log.d("runModel", "This is my message");
+//        Log.d("runModel", "This is my message");
         try {
             /*
             // ip and port for example

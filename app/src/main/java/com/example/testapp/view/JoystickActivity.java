@@ -20,7 +20,7 @@ public class JoystickActivity extends AppCompatActivity {
     private double aileron;
     private double rudder;
     private ConcreteViewModel VM;
-    private Joystick view;
+    private Joystick joystick;
 
     @BindingAdapter({"toastMessage"})
     public static void runMe(View view, String message) {
@@ -30,9 +30,6 @@ public class JoystickActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // add view
-//        Joystick joystick = new Joystick(this).build();
-//        Joystick joystick = new Joystick(this, attrs);
 
 
         // data binding
@@ -42,8 +39,12 @@ public class JoystickActivity extends AppCompatActivity {
         binding.setViewModel(VM);
         binding.executePendingBindings();
 
-        view = new Joystick(this);
-        setContentView(view);
+        joystick = (Joystick) findViewById(R.id.joystickView);
+
+        joystick.service=(a,e)->{
+            VM.setAileron(a);
+            VM.setElevator(e);
+        };
     }
 
 }

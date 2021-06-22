@@ -10,11 +10,6 @@
             type="com.example.testapp.viewModel.ConcreteViewModel" />
     </data>
 
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,11 +41,10 @@
 <!--            in order to re-connect when new values are given-->
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_gravity="start"
-                android:layout_marginStart="-120dp"
-                android:layout_marginTop="270dp"
+                android:layout_marginTop="50dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:rotation="270">
@@ -59,8 +53,8 @@
                     android:id="@+id/rudderTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
                     android:text="@string/rudder"
+                    android:layout_marginTop="20dp"
                     android:textSize="20sp" />
 
                 <SeekBar
@@ -72,8 +66,13 @@
 
                 <com.example.testapp.view.Joystick
                     android:id="@+id/joystickView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    app:circle_color="@color/yellow_100"
+                    android:layout_margin="10dp"
+                    app:circle_radius="50dp"
+                    android:background="@color/blue_100"
+                    android:rotation="270"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
 
             </LinearLayout>
 
@@ -81,7 +80,7 @@
                 android:id="@+id/throttleSeekBar"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_marginTop="150dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:max="200"
@@ -95,12 +94,10 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:layout_marginBottom="100dp"
+                android:layout_marginBottom="10dp"
                 android:text="@string/throttle"
                 android:textSize="20sp" />
 
         </LinearLayout>
-
-    </ScrollView>
 
 </layout>
