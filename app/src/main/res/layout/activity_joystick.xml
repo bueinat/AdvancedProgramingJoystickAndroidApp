@@ -23,16 +23,37 @@
                 android:id="@+id/joystickTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="10dp"
                 android:text="@string/joystickTitle"
                 android:textColor="@color/blue_100"
                 android:textSize="50sp"
                 android:textStyle="bold" />
 
+            <EditText
+                android:id="@+id/ip"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:hint="ip"
+                android:text="@={viewModel.ip}"
+                />
+            <EditText
+                android:id="@+id/port"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:hint="port"
+                android:text="@={viewModel.port}"
+                />
+
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="10dp"
                 android:onClick="@{()-> viewModel.runModel()}"
                 android:text="@string/connect"
                 app:backgroundTint="#407294" />

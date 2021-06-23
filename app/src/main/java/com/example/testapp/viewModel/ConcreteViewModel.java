@@ -9,6 +9,7 @@ import androidx.databinding.library.baseAdapters.BR;
 import com.example.testapp.model.ConcreteModel;
 
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 public class ConcreteViewModel extends BaseObservable implements AbstractViewModel {
 
@@ -17,8 +18,31 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     // I think the set methods behind is not necessary
 
     private ConcreteModel model;
-    private InetAddress ip;
-    private int port;
+//    private InetAddress ip;
+//    private int port;
+
+    @Bindable
+    private String ip;
+    private String port;
+
+    @Bindable
+    public String getIp() { return ip; }
+
+    @Bindable
+    public void setIp(String new_ip) {
+        this.ip = new_ip;
+        notifyPropertyChanged(BR.ip);
+    }
+
+    @Bindable
+    public String getPort() { return port; }
+
+    @Bindable
+    public void setPort(String new_port) {
+        this.port = new_port;
+        notifyPropertyChanged(BR.port);
+    }
+
 
     private double progressToValue(int progress) { return (double)(progress - 100) / 100; }
     private int valueToProgress(double value) { return (int)((value + 1) * 100); }
@@ -27,8 +51,6 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     private double aileron;
     @Bindable
     private double elevator;
-    @Bindable
-    private double rudder;
 
     @Bindable
     private int throttleProgress = 100;
