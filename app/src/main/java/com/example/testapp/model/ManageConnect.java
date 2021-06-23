@@ -15,11 +15,16 @@ public class ManageConnect {
     private PrintWriter out;
     private Socket socket;
 
-    public ManageConnect(InetAddress ip, int port) throws IOException
+    private InetAddress ip;
+    private int port;
+
+    public ManageConnect(InetAddress ip, int port)
     {
+        this.ip = ip;
+        this.port = port;
+
         this.massagesQueue = new LinkedList<>();
         this.keepRun = true;
-        socket = new Socket(ip, port);
     }
 
     public synchronized void addToQueue(String s)
@@ -31,6 +36,7 @@ public class ManageConnect {
 
     public synchronized void connectAndRun() throws IOException, InterruptedException
     {
+            socket = new Socket(ip, port);
             out  = new PrintWriter(socket.getOutputStream(), true);
             Log.d("connectAndRun", "connect to server");
 

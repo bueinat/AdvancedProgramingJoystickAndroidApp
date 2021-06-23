@@ -12,14 +12,7 @@ public class ConcreteModel implements AbstractModel{
 
     public ConcreteModel(InetAddress ip, int port)
     {
-
-        try {
-            this.manageConnect = new ManageConnect(ip, port);
-        } catch (IOException ioe)
-        {
-            Log.d("connectAndRun","Exeption: " + ioe.getMessage());
-        }
-
+        this.manageConnect = new ManageConnect(ip, port);
     }
 
     public void connectToServer() {
