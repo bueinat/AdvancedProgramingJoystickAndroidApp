@@ -78,13 +78,13 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
 
     @Bindable
     public int getThrottleProgress() {
-        Log.d("ThrottleProgress get", "This is my message " + progressToValue((this.throttleProgress)));
+        Log.d("ThrottleProgress get", "This is my message " + progressToValue(this.throttleProgress));
         return this.throttleProgress;
     }
 
     @Bindable
     public void setThrottleProgress(int new_throttle) {
-//        Log.d("ThrottleProgress set", "This is my message " + progressToValue((this.throttleProgress)));
+//        Log.d("ThrottleProgress set", "This is my message " + progressToValue(this.throttleProgress));
         this.throttleProgress = new_throttle;
         notifyPropertyChanged(BR.throttleProgress);
         this.model.setThrottle(getRudder());
@@ -101,7 +101,7 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     @Bindable
     public void setRudder(double new_rudder) {
         // update model's throttle
-//        Log.d("rudder", "This is my message");
+        Log.d("rudder", "This is my message");
         setRudderProgress(valueToProgress(new_rudder));
         notifyPropertyChanged(BR.rudder);
     }
@@ -125,7 +125,7 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
 
     @Bindable
     public void setAileron(double new_aileron) {
-//        Log.d("AileronProgress set", "This is my message " + this.aileron);
+        Log.d("AileronProgress set", "This is my message " + this.aileron);
         this.aileron = new_aileron;
         this.model.setAileron(new_aileron);
     }
