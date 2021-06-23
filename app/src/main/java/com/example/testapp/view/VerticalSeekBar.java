@@ -6,6 +6,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.SeekBar;
 
+import com.example.testapp.viewModel.ConcreteViewModel;
+
 public class VerticalSeekBar extends androidx.appcompat.widget.AppCompatSeekBar {
 
     public VerticalSeekBar(Context context) {

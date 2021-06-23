@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import com.example.testapp.R;
@@ -23,7 +24,6 @@ interface Changeable
 public class Joystick extends View {
 
     private Paint joystickPaint;
-    private int mCircleColor;
     private int mCircleRadius;
     private float mCircleX, mCircleY;
     public Changeable service;
@@ -55,7 +55,7 @@ public class Joystick extends View {
         if (set == null)
             return;
         TypedArray ta = getContext().obtainStyledAttributes(set, R.styleable.Joystick);
-        mCircleColor = ta.getColor(R.styleable.Joystick_circle_color, Color.GREEN);
+        int mCircleColor = ta.getColor(R.styleable.Joystick_circle_color, Color.GREEN);
         mCircleRadius = ta.getDimensionPixelSize(R.styleable.Joystick_circle_radius, 100);
 
         joystickPaint.setColor(mCircleColor);
@@ -87,13 +87,16 @@ public class Joystick extends View {
 
                 if (dx + dy < Math.pow(mCircleRadius, 2)) {
                     // touched
+                    x = Math.max(1, Math.min(x, getWidth())); // x in [0, width]
+                    y = Math.max(1, Math.min(y, getHeight())); // x in [0, height]
                     mCircleX = x;
                     mCircleY = y;
 
                     // send elevator and aileron values
-                    float a = x / (getWidth() - 2 * mCircleRadius) - 0.5f;  // aileron
-                    float e = y / (getHeight() - 2 * mCircleRadius) - 0.5f; // elevator
-                    service.onChange(a, e);
+                    float a = 2 * x / getWidth()  - 1; // aileron
+                    float e = 2 * y / getHeight() - 1; // elevator
+                    Log.d("on_touch", "(x, y) = (" + x + ", " + y + "), (a, e) = (" + a + ", " + e + "), width: " + getWidth() + " height: " + getHeight());
+                    service.onChange(a, -e);
                     postInvalidate();
                     return true;
                 }
