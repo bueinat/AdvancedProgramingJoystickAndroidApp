@@ -11,6 +11,10 @@ public class ConcreteModel {
     private ManageConnect manageConnect;
 
     public void connectToServer(InetAddress ip, int port) {
+        if (this.manageConnect != null)
+        {
+            this.manageConnect.stopRun();
+        }
         this.manageConnect = new ManageConnect(ip, port);
         new Thread(()-> {try {
             manageConnect.connectAndRun();
@@ -18,9 +22,6 @@ public class ConcreteModel {
         {
             Log.e("runModel","Exception throws: " + ie.getMessage());
         }}).start();
-
-
-
     }
     public void setElevator(double d)
     {
