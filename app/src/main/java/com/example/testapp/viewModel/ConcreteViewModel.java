@@ -21,6 +21,11 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
 //    private InetAddress ip;
 //    private int port;
 
+
+    public ConcreteViewModel()
+    {
+        this.model = new ConcreteModel();
+    }
     @Bindable
     private String ip;
     private String port;
@@ -46,8 +51,8 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
 
     private double progressToRudder(int progress) { return (double)(progress - 100) / 100; }
     private int rudderToProgress(double value) { return (int)((value + 1) * 100); }
-    private double progressToThrottle(int progress) { return (double)(progress - 50) / 50; }
-    private int throttleToProgress(double value) { return (int)((value + 1) * 50); }
+    private double progressToThrottle(int progress) { return (double)progress / 100.0; }
+    private int throttleToProgress(double value) { return (int)(value * 100); }
 
     @Bindable
     private double aileron;
@@ -86,10 +91,10 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
 
     @Bindable
     public void setThrottleProgress(int new_throttle) {
-//        Log.d("ThrottleProgress set", "This is my message " + progressToValue(this.throttleProgress));
+        Log.d("ThrottleProgress set", "This is my message " + progressToThrottle(this.throttleProgress));
         this.throttleProgress = new_throttle;
         notifyPropertyChanged(BR.throttleProgress);
-        this.model.setThrottle(getRudder());
+        this.model.setThrottle(getThrottle());
     }
 
     @Bindable
@@ -155,14 +160,15 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
             // ip and port for example
             InetAddress ip = InetAddress.getByAddress(
                     new byte[]{(byte) 192, (byte) 168, (byte) 2, (byte) 107});
-            this.model = new ConcreteModel(ip, 5400);
+            this.model = new ConcreteModel();
 
-//            this.model = new ConcreteModel(this.ip, this.port);
+            //this.model = new ConcreteModel(this.ip, this.port);
+
+            this.model.connectToServer(ip, 5400);
             this.model.setThrottle(0.0);
             this.model.setRudder(0.0);
             this.model.setAileron(0.0);
             this.model.setElevator(0.0);
-            this.model.connectToServer();
         } catch (Exception e) {
             System.out.println("failed to create the variable \"ip\"");
         }

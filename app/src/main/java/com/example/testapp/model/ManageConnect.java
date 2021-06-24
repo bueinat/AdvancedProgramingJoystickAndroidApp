@@ -34,10 +34,15 @@ public class ManageConnect {
     }
 
 
-    public synchronized void connectAndRun() throws IOException, InterruptedException
+    public synchronized void connectAndRun() throws InterruptedException
     {
+        try {
             socket = new Socket(ip, port);
-            out  = new PrintWriter(socket.getOutputStream(), true);
+            out = new PrintWriter(socket.getOutputStream(), true);
+        } catch(IOException ioe)
+        {
+            Log.e("Connect to server: ", "Failed to connect to server");
+        }
             Log.d("connectAndRun", "connect to server");
 
             while(keepRun)

@@ -29,6 +29,7 @@ public class JoystickActivity extends AppCompatActivity {
         // data binding
         ActivityJoystickBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_joystick);
         VM = new ConcreteViewModel();
+        //VM.runModel();
         binding.setViewModel(VM);
         binding.executePendingBindings();
 
