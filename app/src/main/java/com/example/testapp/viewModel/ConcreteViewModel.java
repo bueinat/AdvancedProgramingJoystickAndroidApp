@@ -20,6 +20,16 @@ public class ConcreteViewModel extends BaseObservable {
         this.model = new ConcreteModel();
     }
 
+    @Bindable
+    String errorMessage = "no errors found";
+
+    @Bindable
+    public String getErrorMessage() { return this.errorMessage; }
+    @Bindable
+    public void setErrorMessage(String new_message ) {
+        this.errorMessage = new_message;
+        notifyPropertyChanged(BR.errorMessage);
+    }
     // ip and port for connection
     @Bindable
     private String ip;
@@ -62,6 +72,7 @@ public class ConcreteViewModel extends BaseObservable {
 
     @Bindable
     public void setThrottle(double new_throttle) {
+        setErrorMessage("Throttle had changed via setThrottle");
         setThrottleProgress(throttleToProgress(new_throttle));
         notifyPropertyChanged(BR.throttle);
     }
@@ -71,6 +82,7 @@ public class ConcreteViewModel extends BaseObservable {
 
     @Bindable
     public void setThrottleProgress(int new_throttle) {
+        setErrorMessage("Throttle had changed via setThrottleProgress");
         this.throttleProgress = new_throttle;
         notifyPropertyChanged(BR.throttleProgress);
         this.model.setThrottle(getThrottle());
