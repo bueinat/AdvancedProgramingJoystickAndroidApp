@@ -34,35 +34,35 @@ public class ManageConnect {
     }
 
 
-    public synchronized void connectAndRun() throws InterruptedException
+    public synchronized void connectAndRun() throws IOException
     {
-        try {
-            this.socket = new Socket(ip, port);
-            this.out = new PrintWriter(socket.getOutputStream(), true);
-        } catch(IOException ioe)
+
+        this.socket = new Socket(ip, port);
+        this.out = new PrintWriter(socket.getOutputStream(), true);
+        String s;
+        while(true)
         {
-            Log.e("ConnectAndRun: ", "Failed to connect to server");
-        }
-            String s;
-            while(true)
-            {
-                if(massagesQueue.isEmpty())
+            if(massagesQueue.isEmpty())
+                try {
                     wait();
-                s = massagesQueue.poll();
-                if (s.equals("stop"))
+                } catch (InterruptedException ie)
                 {
-                    break;
+
                 }
-                out.print(s);
-                out.flush();
-            }
-            try {
-                this.socket.close();
-                this.out.close();
-            }catch(IOException ioe)
+            s = massagesQueue.poll();if (s.equals("stop"))
             {
-                Log.e("ConnectAndRun: ", "Failed to close socket");
+                break;
             }
+            out.print(s);
+            out.flush();
+        }
+        try {
+            this.socket.close();
+            this.out.close();
+        }catch(IOException ioe)
+        {
+            Log.e("ConnectAndRun: ", "Failed to close socket");
+        }
 
     }
 

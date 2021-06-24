@@ -8,7 +8,9 @@ import androidx.databinding.library.baseAdapters.BR;
 
 import com.example.testapp.model.ConcreteModel;
 
+import java.io.IOException;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 
 public class ConcreteViewModel extends BaseObservable {
@@ -157,8 +159,11 @@ public class ConcreteViewModel extends BaseObservable {
             this.model.setRudder(0.0);
             this.model.setAileron(0.0);
             this.model.setElevator(0.0);
-        } catch (Exception e) {
+        } catch (UnknownHostException uhe) {
             Log.e("runModel","failed to connect to the FlightGear");
+        } catch (IOException ioe)
+        {
+            setErrorMessage("problem with connecting to simulator, try again");
         }
     }
 
