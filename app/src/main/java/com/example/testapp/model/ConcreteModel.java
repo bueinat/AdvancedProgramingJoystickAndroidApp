@@ -25,33 +25,25 @@ public class ConcreteModel {
     public void setElevator(double d)
     {
         if(this.manageConnect == null)
-        {
             return;
-        }
         this.manageConnect.addToQueue("set /controls/flight/elevator " + d + "\r\n");
     }
     public void setAileron(double d)
     {
         if(this.manageConnect == null)
-        {
             return;
-        }
         this.manageConnect.addToQueue("set /controls/flight/aileron " + d + "\r\n");
     }
     public void setRudder(double d)
     {
         if(this.manageConnect == null)
-        {
             return;
-        }
         this.manageConnect.addToQueue("set /controls/flight/rudder " + d + "\r\n");
     }
     public void setThrottle(double d)
     {
         if(this.manageConnect == null)
-        {
             return;
-        }
         this.manageConnect.addToQueue("set /controls/engines/current-engine/throttle " + d + "\r\n");
     }
 

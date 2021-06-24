@@ -14,7 +14,12 @@ import com.example.testapp.R;
 
 import androidx.annotation.Nullable;
 
+/* Writing this component I used some youtube video which explained most of this */
+
 @FunctionalInterface
+/**
+ * Functional interface used for updating joystick using strategy pattern
+ */
 interface Changeable
 {
     void onChange(float a, float e);
@@ -26,10 +31,10 @@ public class Joystick extends View {
     private Paint joystickPaint;
     private int mCircleRadius;
     private float mCircleX, mCircleY;
-    public Changeable service;
+    public Changeable setEA;
 
-//    public void onChange(float a, float e);
 
+    // constructors - all of them are needed for layouts stuff
     public Joystick(Context context) {
         super(context);
         init(null);
@@ -50,6 +55,10 @@ public class Joystick extends View {
 //        init(attrs);
 //    }
 
+    /**
+     * initialize the Joystick component - pick colors and sized via given set
+     * @param set: set of attributes passed for creating the joystick
+     */
     private void init(@Nullable AttributeSet set) {
         joystickPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         if (set == null)
@@ -64,40 +73,47 @@ public class Joystick extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);
+        // draw the circle on the canvas
         if (mCircleX == 0f || mCircleY == 0f) {
-            mCircleX = (float)getWidth() / 2; // (float)(getWidth() - mCircleRadius * 1.5);
-            mCircleY = (float)getWidth() / 2; // (float) (getHeight() - mCircleRadius * 1.5);
+            mCircleX = (float)getWidth() / 2;
+            mCircleY = (float)getWidth() / 2;
         }
         canvas.drawCircle(mCircleX, mCircleY, mCircleRadius, joystickPaint);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        // treat touch event
+        // if no action eas caught, the returned value will be returned
         boolean value = super.onTouchEvent(event);
+
+        // pick an action
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 return true;
             }
+            // move the joystick and update aileron, elevation
             case MotionEvent.ACTION_MOVE: {
+                // get (x, y) of the touch
                 float x = event.getX();
                 float y = event.getY();
                 double dx = Math.pow(x - mCircleX, 2);
                 double dy = Math.pow(y - mCircleY, 2);
 
+                // if the touch is inside the circle
                 if (dx + dy < Math.pow(mCircleRadius, 2)) {
-                    // touched
+
                     x = Math.max(1, Math.min(x, getWidth())); // x in [0, width]
                     y = Math.max(1, Math.min(y, getHeight())); // x in [0, height]
+                    // move the circle to the touched point
                     mCircleX = x;
                     mCircleY = y;
 
                     // send elevator and aileron values
-                    float a = 2 * x / getWidth()  - 1; // aileron
-                    float e = 2 * y / getHeight() - 1; // elevator
-                    Log.d("on_touch", "(x, y) = (" + x + ", " + y + "), (a, e) = (" + a + ", " + e + "), width: " + getWidth() + " height: " + getHeight());
-                    service.onChange(a, -e);
-                    postInvalidate();
+                    float a = 2 * x / getWidth()  - 1;  // aileron
+                    float e = 2 * y / getHeight() - 1;  // elevator
+                    setEA.onChange(a, -e);              // update the joystick
+                    postInvalidate();                   // re-draw
                     return true;
                 }
             }

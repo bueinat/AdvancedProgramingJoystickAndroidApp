@@ -8,6 +8,7 @@ import android.content.Intent;
 
 import com.example.testapp.R;
 
+// this class is only as opening and goes straight to JoystickActivity
 
 public class MainActivity extends AppCompatActivity {
 

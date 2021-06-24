@@ -47,9 +47,8 @@ public class ManageConnect {
             while(keepRun)
             {
                 if(massagesQueue.isEmpty())
-                {
                     wait();
-                }
+
                 out.print(massagesQueue.poll());
                 out.flush();
             }

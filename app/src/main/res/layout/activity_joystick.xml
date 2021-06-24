@@ -42,8 +42,7 @@
             android:layout_marginTop="20dp"
             android:layout_below="@id/joystickTitle"
             android:layout_centerHorizontal="true"
-            android:text="@={viewModel.ip}"
-            />
+            android:text="@={viewModel.ip}" />
         <EditText
             android:id="@+id/port"
             android:layout_width="match_parent"
@@ -66,9 +65,6 @@
             android:text="@string/connect"
             android:layout_centerHorizontal="true"
             app:backgroundTint="#407294" />
-        <!--            maybe we should use something like this:-->
-        <!--            bind:toastMessage="@{viewModel.toastMessage}"-->
-        <!--            in order to re-connect when new values are given-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/subLayout"
@@ -93,9 +89,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <!--                android:rotation="270"-->
-            <!--                app:layout_constraintEnd_toStartOf="@+id/joystickView"-->
-
             <com.example.testapp.view.VerticalSeekBar
                 android:id="@+id/rudderSeekBar"
                 android:layout_width="wrap_content"
@@ -108,8 +101,6 @@
                 android:progress="@={viewModel.rudderProgress}"
                 app:layout_constraintStart_toEndOf="@+id/rudderTitle"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <!--                android:layout_toEndOf="@id/rudderTitle"-->
 
             <com.example.testapp.view.Joystick
                 android:layout_width="0dp"

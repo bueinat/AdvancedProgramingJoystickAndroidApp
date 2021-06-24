@@ -15,17 +15,22 @@ public class ConcreteViewModel extends BaseObservable {
 
     private ConcreteModel model;
 
-
     public ConcreteViewModel()
     {
         this.model = new ConcreteModel();
     }
+
+    // ip and port for connection
     @Bindable
     private String ip;
+    @Bindable
     private String port;
 
     @Bindable
     public String getIp() { return ip; }
+
+    @Bindable
+    public String getPort() { return port; }
 
     @Bindable
     public void setIp(String new_ip) {
@@ -34,27 +39,19 @@ public class ConcreteViewModel extends BaseObservable {
     }
 
     @Bindable
-    public String getPort() { return port; }
-
-    @Bindable
     public void setPort(String new_port) {
         this.port = new_port;
         notifyPropertyChanged(BR.port);
     }
 
-
+    // conversion methods
     private double progressToRudder(int progress) { return (double)(progress - 100) / 100; }
     private int rudderToProgress(double value) { return (int)((value + 1) * 100); }
     private double progressToThrottle(int progress) { return (double)progress / 100.0; }
     private int throttleToProgress(double value) { return (int)(value * 100); }
 
     @Bindable
-    private double aileron;
-    @Bindable
-    private double elevator;
-
-    @Bindable
-    private int throttleProgress = 100;
+    private int throttleProgress = 0;
 
 
     @Bindable
@@ -65,15 +62,12 @@ public class ConcreteViewModel extends BaseObservable {
 
     @Bindable
     public void setThrottle(double new_throttle) {
-
         setThrottleProgress(throttleToProgress(new_throttle));
         notifyPropertyChanged(BR.throttle);
     }
 
     @Bindable
-    public int getThrottleProgress() {
-        return this.throttleProgress;
-    }
+    public int getThrottleProgress() { return this.throttleProgress; }
 
     @Bindable
     public void setThrottleProgress(int new_throttle) {
@@ -83,7 +77,7 @@ public class ConcreteViewModel extends BaseObservable {
     }
 
     @Bindable
-    private int rudderProgress = 100;
+    private int rudderProgress = 0;
 
 
     @Bindable
@@ -102,10 +96,14 @@ public class ConcreteViewModel extends BaseObservable {
     @Bindable
     public void setRudderProgress(int new_rudder) {
         this.rudderProgress = new_rudder;
-//        notifyPropertyChanged(BR.rudderProgress);
+        notifyPropertyChanged(BR.rudderProgress);
         this.model.setRudder(getRudder());
     }
 
+    @Bindable
+    private double aileron = 0;
+    @Bindable
+    private double elevator = 0;
 
     @Bindable
     public double getAileron() {
@@ -114,7 +112,6 @@ public class ConcreteViewModel extends BaseObservable {
 
     @Bindable
     public void setAileron(double new_aileron) {
-        Log.d("AileronProgress set", "This is my message " + this.aileron);
         this.aileron = new_aileron;
         this.model.setAileron(new_aileron);
     }
@@ -131,6 +128,9 @@ public class ConcreteViewModel extends BaseObservable {
     }
 
 
+    /**
+     * run the model using the given ip and port
+     */
     public void runModel ()
     {
 

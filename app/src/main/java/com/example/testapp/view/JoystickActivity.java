@@ -13,14 +13,10 @@ import com.example.testapp.R;
 import com.example.testapp.databinding.ActivityJoystickBinding;
 import com.example.testapp.viewModel.ConcreteViewModel;
 
+// This is the app basically. It uses the activity_joystick.xml layout
 public class JoystickActivity extends AppCompatActivity {
 
-    private double throttle;
-    private double elevator;
-    private double aileron;
-    private double rudder;
     private ConcreteViewModel VM;
-    private Joystick joystick;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +29,10 @@ public class JoystickActivity extends AppCompatActivity {
         binding.executePendingBindings();
 
         // get joystick and inject operations to joystick
-        joystick = findViewById(R.id.joystickView);
+        Joystick joystick = findViewById(R.id.joystickView);
 
-        joystick.service=(a,e)->{
+        // inject behavior to joystick
+        joystick.setEA=(a, e)->{
             VM.setAileron(a);
             VM.setElevator(e);
         };
