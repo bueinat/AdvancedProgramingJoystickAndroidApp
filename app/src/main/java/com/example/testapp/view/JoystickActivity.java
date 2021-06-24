@@ -34,7 +34,8 @@ public class JoystickActivity extends AppCompatActivity {
         binding.executePendingBindings();
 
         // get joystick and inject operations to joystick
-        joystick = (Joystick) findViewById(R.id.joystickView);
+        // get joystick and inject operations to joystick
+        joystick = findViewById(R.id.joystickView);
 
         joystick.service=(a,e)->{
             VM.setAileron(a);
