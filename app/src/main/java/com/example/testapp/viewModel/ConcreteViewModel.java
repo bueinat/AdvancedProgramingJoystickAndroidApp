@@ -67,10 +67,6 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     public double getThrottle() {
         Log.d("throttle", "This is my message");
         return progressToThrottle(this.throttleProgress);
-        //bind the data to ip and to port, and then call runModel
-
-        //bind each of the properties, and then call model.set for each one of them
-        //i think the set methods behind is not necessary
     }
 
 
@@ -151,7 +147,7 @@ public class ConcreteViewModel extends BaseObservable implements AbstractViewMod
     }
 
     @Override
-    public void runModel ()
+    public void runModel()
     {
         // what happens if you click the button after you've already connected
 //        Log.d("runModel", "This is my message");
