@@ -135,7 +135,7 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:layout_above="@id/throttleTitle"
-                android:max="200"
+                android:max="100"
                 android:progress="@={viewModel.throttleProgress}" />
 
 
