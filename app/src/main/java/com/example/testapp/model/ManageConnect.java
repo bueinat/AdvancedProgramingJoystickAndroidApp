@@ -37,22 +37,32 @@ public class ManageConnect {
     public synchronized void connectAndRun() throws InterruptedException
     {
         try {
-            socket = new Socket(ip, port);
-            out = new PrintWriter(socket.getOutputStream(), true);
+            this.socket = new Socket(ip, port);
+            this.out = new PrintWriter(socket.getOutputStream(), true);
         } catch(IOException ioe)
         {
             Log.e("ConnectAndRun: ", "Failed to connect to server");
         }
-
-            while(keepRun)
+            String s;
+            while(true)
             {
                 if(massagesQueue.isEmpty())
                     wait();
-
-                out.print(massagesQueue.poll());
+                s = massagesQueue.poll();
+                if (s.equals("stop"))
+                {
+                    break;
+                }
+                out.print(s);
                 out.flush();
             }
-
+            try {
+                this.socket.close();
+                this.out.close();
+            }catch(IOException ioe)
+            {
+                Log.e("ConnectAndRun: ", "Failed to close socket");
+            }
 
     }
 

@@ -9,19 +9,41 @@ import java.lang.*;
 public class ConcreteModel {
 
     private ManageConnect manageConnect;
+    private Thread thread;
 
     public void connectToServer(InetAddress ip, int port) {
         if (this.manageConnect != null)
         {
-            this.manageConnect.stopRun();
+            this.manageConnect.addToQueue("stop");
+            try {
+                this.thread.join();
+            } catch(InterruptedException ie)
+            {
+
+            }
         }
         this.manageConnect = new ManageConnect(ip, port);
+        /*
         new Thread(()-> {try {
             manageConnect.connectAndRun();
         } catch (InterruptedException ie)
         {
             Log.e("runModel","Exception throws: " + ie.getMessage());
         }}).start();
+         */
+        this.thread = new Thread() {
+            @Override
+            public void run()
+            {
+                try {
+                    manageConnect.connectAndRun();
+                } catch (InterruptedException ie)
+                {
+                    Log.e("runModel","Exception throws: " + ie.getMessage());
+                }
+            }
+        };
+        this.thread.start();
     }
     public void setElevator(double d)
     {
