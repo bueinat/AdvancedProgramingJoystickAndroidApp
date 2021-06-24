@@ -41,9 +41,8 @@ public class ManageConnect {
             out = new PrintWriter(socket.getOutputStream(), true);
         } catch(IOException ioe)
         {
-            Log.e("Connect to server: ", "Failed to connect to server");
+            Log.e("ConnectAndRun: ", "Failed to connect to server");
         }
-            Log.d("connectAndRun", "connect to server");
 
             while(keepRun)
             {
