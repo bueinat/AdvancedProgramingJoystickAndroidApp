@@ -3,10 +3,6 @@ package com.example.testapp.view;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-
-import androidx.databinding.BindingAdapter;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.testapp.R;

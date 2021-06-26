@@ -5,9 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import com.example.testapp.R;
@@ -16,10 +14,10 @@ import androidx.annotation.Nullable;
 
 /* Writing this component I used some youtube video which explained most of this */
 
-@FunctionalInterface
 /**
  * Functional interface used for updating joystick using strategy pattern
  */
+@FunctionalInterface
 interface Changeable
 {
     void onChange(float a, float e);
