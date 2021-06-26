@@ -40,4 +40,4 @@ The code of this program was divided into 3 packages, according to the MVVM mode
 2) View: What the user sees and its helpers. Including the different activities (MainActivity.java and JoystickActivity.java) and custom components (VerticalSlideBar.java and Joystick.java).
 3) ViewModel: includes the view model's code which controls the whole app. It tracks changes in the View (via data binding as explained) and reports the Model which comes into action. In case of apps where the Model also notifies the View, the view model also passes its messages. Includes only ConcretViewModel.java file.
 
-In [this link]() (fill the link!) you can find the sliders which are showed in the clip (upload link also to that) and the UML Diagram. We didn't add any other documentation because we think this README is informative enough.
+In [this link](https://github.com/bueinat/AdvancedProgramingJoystickAndroidApp/tree/master/Planning%20and%20Design) you can find the sliders which are showed in the clip (upload link also to that) and the UML Diagram. We didn't add any other documentation because we think this README is informative enough.
