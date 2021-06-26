@@ -23,6 +23,7 @@ public class ConcreteViewModel extends BaseObservable {
 
     @Bindable
     String errorMessage = "no errors found";
+    String defaultMessage = "no errors found";
 
     @Bindable
     public String getErrorMessage() { return this.errorMessage; }
@@ -73,7 +74,7 @@ public class ConcreteViewModel extends BaseObservable {
 
     @Bindable
     public void setThrottle(double new_throttle) {
-        setErrorMessage("Throttle had changed via setThrottle");
+//        setErrorMessage("Throttle had changed via setThrottle");
         setThrottleProgress(throttleToProgress(new_throttle));
         notifyPropertyChanged(BR.throttle);
     }
@@ -83,7 +84,7 @@ public class ConcreteViewModel extends BaseObservable {
 
     @Bindable
     public void setThrottleProgress(int new_throttle) {
-        setErrorMessage("Throttle had changed via setThrottleProgress");
+//        setErrorMessage("Throttle had changed via setThrottleProgress");
         this.throttleProgress = new_throttle;
         notifyPropertyChanged(BR.throttleProgress);
         this.model.setThrottle(getThrottle());
@@ -158,11 +159,14 @@ public class ConcreteViewModel extends BaseObservable {
             this.model.setRudder(0.0);
             this.model.setAileron(0.0);
             this.model.setElevator(0.0);
+            this.setErrorMessage(defaultMessage);
         } catch (UnknownHostException uhe) {
+            this.setErrorMessage(uhe.getMessage());
             Log.e("runModel","failed to connect to the FlightGear");
         } catch (IOException ioe)
         {
-            setErrorMessage("problem with connecting to simulator, try again");
+            this.setErrorMessage("problem with connecting to simulator, try again");
+            setErrorMessage(ioe.getMessage());
         }
     }
 
