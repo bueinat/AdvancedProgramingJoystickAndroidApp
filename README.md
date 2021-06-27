@@ -11,6 +11,7 @@ Now you can open the app, which should look like this:
 
 <img src="https://user-images.githubusercontent.com/62245924/123325095-48be8200-d540-11eb-95a1-c364505196b9.png" width="200">
 Enter the IP of the device that runs the simulator, enter port 5400 (or any other picked port) and click `CONNECT`. The app tries to connect for 5 seconds and then times out with an error message. If it happend, you can try again or maybe look over the ip and port you typed. After the connection was made it should say no error was found. Now you are controlling the simulator.
+Note about that: you can only connect once. If you want to connect a different server, you have to close the app and then open it back. This had happened due to some technical issues we couldn't quite figure out.
 
 ### Controlling the Plane
 You can control 4 parameters:
