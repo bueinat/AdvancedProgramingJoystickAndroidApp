@@ -34,10 +34,14 @@ public class ManageConnect {
     }
 
 
-    public synchronized void connectAndRun() throws IOException
+    public synchronized void connectAndRun() throws Exception
     {
-
-        this.socket = new Socket(ip, port);
+        try {
+            this.socket = new Socket(ip, port);
+        } catch(Exception e)
+        {
+           throw e;
+        }
         this.out = new PrintWriter(socket.getOutputStream(), true);
         String s;
         while(true)

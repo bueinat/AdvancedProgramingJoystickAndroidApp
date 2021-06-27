@@ -12,9 +12,11 @@ public class ConcreteModel {
     private ManageConnect manageConnect;
     private Thread thread;
     boolean isProblem;
+    boolean isFinish;
 
     public void connectToServer(InetAddress ip, int port) throws IOException{
         this.isProblem = false;
+        this.isFinish = false;
         if (this.manageConnect != null)
         {
             this.manageConnect.addToQueue("stop");
@@ -42,16 +44,36 @@ public class ConcreteModel {
             {
                 try {
                     manageConnect.connectAndRun();
-                } catch(IOException ioe)
+                } catch(Exception ioe)
                 {
                     isProblem = true;
                 }
+                isFinish = true;
             }
         };
         this.thread.start();
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException ie)
+        {
+
+        }
         if(isProblem)
         {
             throw new IOException();
+        }
+        if (!isFinish)
+        {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ie)
+            {
+
+            }
+            if (!isFinish)
+            {
+                throw new IOException();
+            }
         }
     }
     public void setElevator(double d)

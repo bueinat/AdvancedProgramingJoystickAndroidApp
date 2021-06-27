@@ -28,7 +28,7 @@ public class ConcreteViewModel extends BaseObservable {
     @Bindable
     public String getErrorMessage() { return this.errorMessage; }
     @Bindable
-    public void setErrorMessage(String new_message ) {
+    public void setErrorMessage(String new_message) {
         this.errorMessage = new_message;
         notifyPropertyChanged(BR.errorMessage);
     }
@@ -154,7 +154,9 @@ public class ConcreteViewModel extends BaseObservable {
 
             InetAddress newIP = InetAddress.getByName(this.ip);
             int newPort = Integer.parseInt(this.port);
+            this.setErrorMessage("connecting...");
             this.model.connectToServer(newIP, newPort);
+            this.setErrorMessage("");
             this.model.setThrottle(0.0);
             this.model.setRudder(0.0);
             this.model.setAileron(0.0);
@@ -166,7 +168,7 @@ public class ConcreteViewModel extends BaseObservable {
         } catch (IOException ioe)
         {
             this.setErrorMessage("problem with connecting to simulator, try again");
-            setErrorMessage(ioe.getMessage());
+
         }
     }
 
