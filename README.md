@@ -10,7 +10,7 @@ After that the user need to press on the `Fly` button at the bottom and wait to 
 Now you can open the app, which should look like this:
 
 <img src="https://user-images.githubusercontent.com/62245924/123325095-48be8200-d540-11eb-95a1-c364505196b9.png" width="200">
-Enter the IP of the device that runs the simulator, enter port 5400 (or any other picked port) and click `CONNECT`. Now you are controlling the simulator.
+Enter the IP of the device that runs the simulator, enter port 5400 (or any other picked port) and click `CONNECT`. The app tries to connect for 5 seconds and then times out with an error message. If it happend, you can try again or maybe look over the ip and port you typed. After the connection was made it should say no error was found. Now you are controlling the simulator.
 
 ### Controlling the Plane
 You can control 4 parameters:
@@ -40,4 +40,13 @@ The code of this program was divided into 3 packages, according to the MVVM mode
 2) View: What the user sees and its helpers. Including the different activities (MainActivity.java and JoystickActivity.java) and custom components (VerticalSlideBar.java and Joystick.java).
 3) ViewModel: includes the view model's code which controls the whole app. It tracks changes in the View (via data binding as explained) and reports the Model which comes into action. In case of apps where the Model also notifies the View, the view model also passes its messages. Includes only ConcretViewModel.java file.
 
-In [this link](https://github.com/bueinat/AdvancedProgramingJoystickAndroidApp/tree/master/Planning%20and%20Design) you can find the sliders which are showed in the clip (upload link also to that) and the UML Diagram. We didn't add any other documentation because we think this README is informative enough.
+#### Extra
+In [Planning and Design](https://github.com/bueinat/AdvancedProgramingJoystickAndroidApp/tree/master/Planning%20and%20Design) directory, you can find:
+1) The sliders which are showed in the clip
+2) UML diagram of the main parts of out app
+3) A filmed clip introducing our project
+4) an APK which can be used to install the app directly to your device
+We didn't add any other documentation because we think this README is informative enough.
+
+### NOTE
+As was said, Because of some technical issues, the case where your'e trying to re-connect the server after connection was made is not defined. Don't try to do that, instead you should probably try to close the app and re-open it.
