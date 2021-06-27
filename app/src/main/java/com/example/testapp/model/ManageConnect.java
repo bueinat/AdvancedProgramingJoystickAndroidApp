@@ -34,7 +34,7 @@ public class ManageConnect {
     }
 
 
-    public synchronized void connectAndRun() throws Exception
+    public synchronized void connectAndRun(Boolean[] isFinish) throws Exception
     {
         try {
             this.socket = new Socket(ip, port);
@@ -42,6 +42,7 @@ public class ManageConnect {
         {
            throw e;
         }
+        isFinish[0] = true;
         this.out = new PrintWriter(socket.getOutputStream(), true);
         String s;
         while(true)

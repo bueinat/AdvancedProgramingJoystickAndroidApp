@@ -12,11 +12,13 @@ public class ConcreteModel {
     private ManageConnect manageConnect;
     private Thread thread;
     boolean isProblem;
-    boolean isFinish;
+    Boolean[] isFinish;
 
     public void connectToServer(InetAddress ip, int port) throws IOException{
         this.isProblem = false;
-        this.isFinish = false;
+        this.isFinish = new Boolean[]{Boolean.FALSE};
+        //this.isFinish[0] = false;
+        /*
         if (this.manageConnect != null)
         {
             this.manageConnect.addToQueue("stop");
@@ -27,6 +29,7 @@ public class ConcreteModel {
 
             }
         }
+         */
         this.manageConnect = new ManageConnect(ip, port);
         /*
         new Thread(()-> {try {
@@ -43,12 +46,12 @@ public class ConcreteModel {
             public void run()
             {
                 try {
-                    manageConnect.connectAndRun();
+                    manageConnect.connectAndRun(isFinish);
                 } catch(Exception ioe)
                 {
                     isProblem = true;
                 }
-                isFinish = true;
+
             }
         };
         this.thread.start();
@@ -62,7 +65,7 @@ public class ConcreteModel {
         {
             throw new IOException();
         }
-        if (!isFinish)
+        if (!isFinish[0])
         {
             try {
                 Thread.sleep(5000);
@@ -70,7 +73,7 @@ public class ConcreteModel {
             {
 
             }
-            if (!isFinish)
+            if (!isFinish[0])
             {
                 throw new IOException();
             }
